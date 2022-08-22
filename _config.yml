@@ -104,5 +104,5 @@ copyright:
     license: "CC BY-NC-ND"
 
 # custom setting
-# Abstract 字数长度限制，默认为 60
+# Abstract 字数长度限制，默认为 60，设置为 0 表示无 abstract 时不显示。
 truncate_length: 0

@@ -3,8 +3,17 @@
         <%- image_tag(post.cover || theme.cover[Math.floor(Math.random() * theme.cover.length)], {class: "cover", width: 680, height: 440}) %>
     </a>
     <div class="else">
-        <p><%- post.date.locale("zh-cn").format("MMMM DD, YYYY") %></p>
+        <p><%- post.date.locale("en").format("MMMM DD, YYYY") %></p>
         <h3><%- link_to(post.path, post.title || "Untitled", {class: "posttitle"}) %></h3>
-        <p><%- truncate(strip_html(post.content), {length: 80, omission: '...'}) %></p>
+        <% let truncateLength = typeof theme.truncate_length === 'number' ? theme.truncate_length : 60 %>
+        <% let _content = null %>
+        <% if(!!post.excerpt) { %>
+        <% _content = post.excerpt %>
+        <% } else if (!!post.abstract) { %>
+        <% _content = post.abstract %>
+        <% } else { %>
+        <% _content = truncateLength === 0 ? null : truncate(strip_html(post.content), {length: truncateLength, omission: '...'})%>
+        <% } %>
+        <p><%- _content %></p>
     </div>
 </div>
