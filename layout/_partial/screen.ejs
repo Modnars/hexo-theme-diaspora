@@ -20,13 +20,13 @@
             <div class="iconfont icon-menu switchmenu"></div>
         </div>
     </div>
-    <% if ( first ) { %>
+    <% if (first) { %>
     <div id="post0">
         <p><%- first.date.locale("en").format("MMMM DD, YYYY") %></p>
         <h2><%- link_to(first.path, first.title || config.title, {class: "posttitle"}) %></h2>
         <% let truncateLength = typeof theme.truncate_length === 'number' ? theme.truncate_length : 60 %>
         <% let _content = null %>
-        <% if(!!first.excerpt) { %>
+        <% if (!!first.excerpt) { %>
         <% _content = first.excerpt %>
         <% } else if (!!first.abstract) { %>
         <% _content = first.abstract %>
